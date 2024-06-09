@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/jackc/pgx/v5/pgconn"
-	"gorm.io/gorm"
+	"github.com/wubin1989/gorm"
 )
 
 func TestDialector_Translate(t *testing.T) {

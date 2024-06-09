@@ -1,10 +1,10 @@
-module gorm.io/driver/postgres
+module github.com/wubin1989/postgres
 
 go 1.18
 
 require (
 	github.com/jackc/pgx/v5 v5.5.5
-	gorm.io/gorm v1.25.10
+	github.com/wubin1989/gorm v0.0.1
 )
 
 require (
