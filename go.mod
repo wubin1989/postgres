@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/jackc/pgx/v5 v5.5.5
-	github.com/wubin1989/gorm v0.0.1
+	github.com/wubin1989/gorm v0.0.3
 )
 
 require (
