@@ -38,6 +38,7 @@ WHERE
 `
 
 var typeAliasMap = map[string][]string{
+	"int":                      {"integer"},
 	"int2":                     {"smallint"},
 	"int4":                     {"integer"},
 	"int8":                     {"bigint"},
@@ -50,6 +51,15 @@ var typeAliasMap = map[string][]string{
 	"timestamp with time zone": {"timestamptz"},
 	"bool":                     {"boolean"},
 	"boolean":                  {"bool"},
+	"serial2":                  {"smallserial"},
+	"serial4":                  {"serial"},
+	"serial8":                  {"bigserial"},
+	"varbit":                   {"bit varying"},
+	"char":                     {"character"},
+	"varchar":                  {"character varying"},
+	"float4":                   {"real"},
+	"float8":                   {"double precision"},
+	"timetz":                   {"time with time zone"},
 }
 
 type Migrator struct {
@@ -136,7 +146,15 @@ func (m Migrator) CreateIndex(value interface{}, name string) error {
 					createIndexSQL += " WHERE " + idx.Where
 				}
 
-				return m.DB.Exec(createIndexSQL, values...).Error
+				err := m.DB.Exec(createIndexSQL, values...).Error
+				if err != nil {
+					return err
+				}
+
+				if !m.HasIndex(value, name) {
+					return fmt.Errorf("failed to create index with name %v", name)
+				}
+				return nil
 			}
 		}
 

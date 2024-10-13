@@ -1,6 +1,6 @@
 module github.com/wubin1989/postgres
 
-go 1.18
+go 1.19
 
 require (
 	github.com/jackc/pgx/v5 v5.5.5
