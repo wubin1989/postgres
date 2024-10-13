@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/jackc/pgx/v5 v5.5.5
-	github.com/wubin1989/gorm v0.0.3
+	github.com/wubin1989/gorm v0.0.5
 )
 
 require (
